@@ -23,9 +23,6 @@ namespace ClientDatabase
                 LastName = "Doe"
             };
 
-            //var rowsModified = repo.RemoveAllDataFromAllTable();
-            //Console.WriteLine("{0} Customers Deleted", rowsModified);
-
             Console.WriteLine(repo.DeleteDb()
                 ? "Successfully recreated database !"
                 : "Unsuccessfully recreated database !");
