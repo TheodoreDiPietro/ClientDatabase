@@ -1,7 +1,0 @@
-organization=theodoredipietro-github
-projectKey=TheodoreDiPietro_ClientDatabase
-serverUrl=https://sonarcloud.io
-serverVersion=7.7.0.22487
-dashboardUrl=https://sonarcloud.io/dashboard?id=TheodoreDiPietro_ClientDatabase
-ceTaskId=AWlIzfDE1OjCByh5K-Ax
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AWlIzfDE1OjCByh5K-Ax
