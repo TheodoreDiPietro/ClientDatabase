@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ClientDatabase
 {
@@ -30,12 +31,15 @@ namespace ClientDatabase
                 : "Unsuccessfully recreated database !");
 
             // Add address
-            var address1 = repo.CreateAddress(user1.AddressLine11, user1.AddressLine12, user1.City1, user1.ZipCode1);
-            var address2 = repo.CreateAddress(user1.AddressLine21, user1.AddressLine22, user1.City2, user1.ZipCode2);
+            var addresses = new List<Address>
+            {
+                repo.CreateAddress(user1.AddressLine11, user1.AddressLine12, user1.City1, user1.ZipCode1),
+                repo.CreateAddress(user1.AddressLine21, user1.AddressLine22, user1.City2, user1.ZipCode2)
+            };
 
             // Add client
-            var rowsModified = repo.AddCustomer(user1.FirstName, user1.LastName, address1, address2);
-            rowsModified += repo.AddCustomer("Cocorico", user1.LastName, address1, address2);
+            var rowsModified = repo.AddCustomer(user1.FirstName, user1.LastName, addresses);
+            rowsModified += repo.AddCustomer("Cocorico", user1.LastName, addresses);
 
             Console.WriteLine("{0} rows added", rowsModified);
 

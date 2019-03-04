@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 
@@ -40,21 +41,23 @@ namespace ClientDatabase
             }
         }
 
-        internal int AddCustomer(string firstName, string lastName, Address addressId1, Address addressId2)
+        internal int AddCustomer(string firstName, string lastName, List<Address> addresses)
         {
             using (var ctx = new ShopContext())
             {
-                var address1 = ctx.Addresses.SingleOrDefault(x => x.Equals(addressId1));
-                if (address1 != null) ctx.Addresses.Attach(address1);
-                var address2 = ctx.Addresses.SingleOrDefault(x => x.Equals(addressId2));
-                if (address2 != null) ctx.Addresses.Attach(address2);
+                foreach (var address in addresses)
+                {
+                    var address1 = ctx.Addresses.SingleOrDefault(x => x.Equals(address));
+                    if (address1 != null) ctx.Addresses.Attach(address1);
+                }
+
 
                 var c = new Customer
                 {
                     FirstName = firstName,
                     LastName = lastName,
-                    BlAddress = addressId1,
-                    SpAddress = addressId2
+                    BlAddress = addresses[0],
+                    SpAddress = addresses[1]
                 };
 
                 ctx.Customers.Add(c);
