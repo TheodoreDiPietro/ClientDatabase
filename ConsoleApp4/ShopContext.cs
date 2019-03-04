@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 
-namespace ConsoleApp4
+namespace ClientDatabase
 {
     public class ShopContext : DbContext
     {

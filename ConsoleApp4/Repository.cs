@@ -2,7 +2,7 @@
 using System.Data.SqlClient;
 using System.Linq;
 
-namespace ConsoleApp4
+namespace ClientDatabase
 {
     internal class Repository
     {
